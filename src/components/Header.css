@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.estwini {
+  display: flex;
+  align-items: flex-start;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 7s linear;
+  height: 40px;
+  pointer-events: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+.nav-item {
+  border: 2px solid transparent;
+}

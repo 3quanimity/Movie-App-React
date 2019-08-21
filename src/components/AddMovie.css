@@ -1,0 +1,17 @@
+.Body {
+  width: 17rem;
+  height: 413px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Body:hover {
+  background-color: rgba(0, 255, 255, 0.11);
+  cursor: pointer;
+}
+
+.flexinii {
+  display: flex;
+  flex-direction: column;
+}
