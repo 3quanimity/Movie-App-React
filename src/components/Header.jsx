@@ -5,7 +5,7 @@ import RatingSelector from "./RatingSelector";
 import logo from "../logo.svg";
 import "./Header.css";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <Navbar sticky="top" className="navbar navbar-dark bg-dark mb-4">
       <Container>
@@ -16,10 +16,17 @@ export default function Header() {
           </h2>
         </div>
 
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Form inline onSubmit={props.trigger}>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            name="search"
+          />
           <RatingSelector />
-          <Button variant="outline-info">Search</Button>
+          <Button variant="outline-info" type="submit">
+            Search
+          </Button>
         </Form>
       </Container>
     </Navbar>

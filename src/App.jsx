@@ -8,15 +8,39 @@ import { Container } from "react-bootstrap";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      search: {
+        title: "",
+        rating: ""
+      }
+    };
   }
+
+  grabSearch = e => {
+    e.preventDefault();
+
+    // let search = {
+    //   title: e.target.search.value,
+    //   rating: e.target.rate1.value
+    // };
+    // console.log(search);
+
+    this.setState({
+      search: {
+        title: e.target.search.value,
+        rating: e.target.rate1.value
+      }
+    });
+
+    // console.log(this.state);
+  };
 
   render() {
     return (
       <>
-        <Header />
+        <Header trigger={this.grabSearch} />
         <Container style={{ padding: "0" }} className="App">
-          <MovieContainer />
+          <MovieContainer search={this.state.search} />
         </Container>
       </>
     );

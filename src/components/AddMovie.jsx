@@ -33,7 +33,13 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form className="flexinii" onSubmit={props.trigger}>
+        <Form
+          className="flexinii"
+          onSubmit={e => {
+            props.trigger(e);
+            props.onHide();
+          }}
+        >
           <Form.Group controlId="validationTitle">
             <Form.Label>Movie's Title</Form.Label>
             <Form.Control
@@ -83,12 +89,6 @@ function MyVerticallyCenteredModal(props) {
           </Button>
         </Form>
       </Modal.Body>
-
-      <Modal.Footer>
-        <Button className="btn-success" onClick={props.onHide}>
-          Done
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
@@ -120,7 +120,6 @@ export default function AddMovie(props) {
         show={modalShow}
         trigger={props.trigger}
         onHide={() => setModalShow(false)}
-        // onHide={() => this.setState({ modalShow: false })}
       />
     </ButtonToolbar>
   );

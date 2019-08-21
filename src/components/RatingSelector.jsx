@@ -4,7 +4,6 @@ import StarRatingComponent from "react-star-rating-component";
 export default class RatingSelector extends Component {
   constructor() {
     super();
-
     this.state = {
       rating: 3
     };

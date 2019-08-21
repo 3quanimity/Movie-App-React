@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import MovieCard from "./MovieCard";
 import AddMovie from "./AddMovie";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import { Container } from "react-bootstrap";
 import "./MovieContainer.css";
 
 export default class MovieContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       movieList: [
         {
@@ -56,10 +55,6 @@ export default class MovieContainer extends Component {
     };
   }
 
-  // updateMovieList = m => {
-  //   this.setState(this.state.movieList.push(m));
-  // };
-
   // handle submit
   handleSubmit = e => {
     e.preventDefault();
@@ -69,22 +64,29 @@ export default class MovieContainer extends Component {
       imgUrl: e.target.poster.value,
       rating: e.target.rating.value
     };
-    console.log(this.state);
-    // this.setState(movieList: this.state.movieList.push(newMovie));
+    // console.log(this.state);
     this.setState({ movieList: [...this.state.movieList, newMovie] });
   };
 
   render() {
     return (
       <div className="movieContainer">
-        {this.state.movieList.map((el, index) => (
-          <MovieCard
-            key={index}
-            title={el.title}
-            imgUrl={el.imgUrl}
-            rating={el.rating}
-          />
-        ))}
+        {this.state.movieList
+          .filter(
+            el =>
+              el.title
+                .toUpperCase()
+                .includes(this.props.search.title.toUpperCase()) &&
+              Number(el.rating) >= Number(this.props.search.rating)
+          )
+          .map((el, index) => (
+            <MovieCard
+              key={index}
+              title={el.title}
+              imgUrl={el.imgUrl}
+              rating={el.rating}
+            />
+          ))}
         <AddMovie trigger={this.handleSubmit} />
       </div>
     );
