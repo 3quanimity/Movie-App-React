@@ -3,8 +3,9 @@ import MovieCard from "./MovieCard";
 import AddMovie from "./AddMovie";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./MovieContainer.css";
+import LoaderHOC from "../HOC/LoaderHOC";
 
-export default class MovieContainer extends Component {
+class MovieContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,6 +70,7 @@ export default class MovieContainer extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="movieContainer">
         {this.state.movieList
@@ -92,6 +94,8 @@ export default class MovieContainer extends Component {
     );
   }
 }
+
+export default LoaderHOC(MovieContainer);
 
 /****/
 
