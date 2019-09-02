@@ -7,7 +7,6 @@ import "./AddMovie.css";
 import plus from "../plus.png";
 
 // React-bootstrap Modal with integrated form
-
 function MyVerticallyCenteredModal(props) {
   // // handle submit
   // const handleSubmit = e => {
@@ -94,7 +93,6 @@ function MyVerticallyCenteredModal(props) {
 }
 
 // AddMovie Card Component, the one triggering the form Modal
-
 export default function AddMovie(props) {
   const [modalShow, setModalShow] = React.useState(false);
 

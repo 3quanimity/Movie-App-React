@@ -9,10 +9,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: {
-        title: "",
-        rating: ""
-      },
+      // search: {
+      //   title: "",
+      //   rating: ""
+      // },
       isLoading: true
     };
   }
@@ -26,21 +26,21 @@ class App extends Component {
     }, 2000);
   }
 
-  grabSearch = e => {
-    e.preventDefault();
+  // grabSearch = e => {
+  //   e.preventDefault();
 
-    this.setState({
-      search: {
-        title: e.target.search.value,
-        rating: e.target.rate1.value
-      }
-    });
-  };
+  //   this.setState({
+  //     search: {
+  //       title: e.target.search.value,
+  //       rating: e.target.rate1.value
+  //     }
+  //   });
+  // };
 
   render() {
     return (
       <Fragment>
-        <Header trigger={this.grabSearch} />
+        <Header />
         <Container style={{ padding: "0" }} className="App">
           <MovieContainer
             search={this.state.search}
@@ -51,5 +51,13 @@ class App extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => {
+//   return { movieList: state };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return ()
+// }
 
 export default App;

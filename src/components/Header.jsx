@@ -4,8 +4,24 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import RatingSelector from "./RatingSelector";
 import logo from "../logo.svg";
 import "./Header.css";
+import { searchMovie } from "../js/actions/index";
+import { connect } from "react-redux";
 
-export default function Header(props) {
+const mapDispatchToProps = dispatch => {
+  return { searchMovie: search => dispatch(searchMovie(search)) };
+};
+
+function connectedHeader(props) {
+  const grabSearch = e => {
+    e.preventDefault();
+    let search = {
+      title: e.target.search.value,
+      rating: e.target.rate1.value
+    };
+    props.searchMovie(search);
+    // console.log(props.searchMovie);
+  };
+
   return (
     <Navbar sticky="top" className="navbar navbar-dark bg-dark mb-4">
       <Container>
@@ -16,7 +32,7 @@ export default function Header(props) {
           </h2>
         </div>
 
-        <Form inline onSubmit={props.trigger}>
+        <Form inline onSubmit={grabSearch}>
           <FormControl
             type="text"
             placeholder="Search"
@@ -32,3 +48,9 @@ export default function Header(props) {
     </Navbar>
   );
 }
+
+const Header = connect(
+  null,
+  mapDispatchToProps
+)(connectedHeader);
+export default Header;
